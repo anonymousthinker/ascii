@@ -1,13 +1,20 @@
-export const putChar = (screen, yCor, xCor, char) => {
-  if (xCor < 0 || xCor > screen[0].length || yCor < 0 || yCor > screen.length) {
+export const putChar = (screen, rowIndex, colIndex, char) => {
+  if (
+    colIndex < 0 ||
+    colIndex > screen[0].length ||
+    rowIndex < 0 ||
+    rowIndex > screen.length
+  ) {
     return;
   }
 
-  screen[yCor][xCor] = char;
+  screen[rowIndex][colIndex] = char;
 };
 
-const adjust = ([row, col], [endRow, endCol]) => {
-  return row > endRow ? [row - 1, col + 1] : [row + 1, col + 1];
+const adjust = ([currentRow, currentCol], [endRow, endCol]) => {
+  return currentRow > endRow
+    ? [currentRow - 1, currentCol + 1]
+    : [currentRow + 1, currentCol + 1];
 };
 
 export const diagonal = (coordinates, char) => {
@@ -15,13 +22,13 @@ export const diagonal = (coordinates, char) => {
   const range = Array.from({ length: size }, () => []);
 
   range[0] = coordinates[0];
-  for (let i = 1; i < size; i++) {
-    range[i] = adjust(range[i - 1], coordinates[1]);
+  for (let currCoordinates = 1; currCoordinates < size; currCoordinates++) {
+    range[currCoordinates] = adjust(range[currCoordinates - 1], coordinates[1]);
   }
 
   return function (screen) {
-    range.forEach(([yCor, xCor]) => {
-      putChar(screen, yCor, xCor, char);
+    range.forEach(([rowIndex, colIndex]) => {
+      putChar(screen, rowIndex, colIndex, char);
     });
   };
 };

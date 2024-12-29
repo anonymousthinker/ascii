@@ -1,83 +1,83 @@
 import { verticalLine, horizontalLine, diagonal } from "./shapes.js";
 
-export const getCharacterPatterns = (size) => {
+export const getCharacterPatterns = (size, char) => {
   const ZERO = 0;
   const MIDDLE = Math.floor(size / 2);
   const letterPatterns = {
     O: [
-      verticalLine(ZERO, ZERO, "*"),
-      horizontalLine(1, ZERO, "*"),
-      verticalLine(size - 1, ZERO, "*"),
-      horizontalLine(1, size - 1, "*"),
+      verticalLine(ZERO, ZERO, char),
+      horizontalLine(1, ZERO, char),
+      verticalLine(size - 1, ZERO, char),
+      horizontalLine(1, size - 1, char),
     ],
     A: [
-      verticalLine(ZERO, ZERO, "*"),
-      horizontalLine(ZERO, ZERO, "*"),
-      horizontalLine(ZERO, size - 1, "*"),
-      verticalLine(MIDDLE, ZERO, "*"),
+      verticalLine(ZERO, ZERO, char),
+      horizontalLine(ZERO, ZERO, char),
+      horizontalLine(ZERO, size - 1, char),
+      verticalLine(MIDDLE, ZERO, char),
     ],
     H: [
-      horizontalLine(ZERO, ZERO, "*"),
-      verticalLine(MIDDLE, ZERO, "*"),
-      horizontalLine(ZERO, size - 1, "*"),
+      horizontalLine(ZERO, ZERO, char),
+      verticalLine(MIDDLE, ZERO, char),
+      horizontalLine(ZERO, size - 1, char),
     ],
     E: [
-      horizontalLine(ZERO, ZERO, "*"),
-      verticalLine(ZERO, 1, "*"),
-      verticalLine(MIDDLE, 1, "*"),
-      verticalLine(size - 1, 1, "*"),
+      horizontalLine(ZERO, ZERO, char),
+      verticalLine(ZERO, 1, char),
+      verticalLine(MIDDLE, 1, char),
+      verticalLine(size - 1, 1, char),
     ],
-    L: [verticalLine(size - 1, 1, "*"), horizontalLine(ZERO, ZERO, "*")],
+    L: [verticalLine(size - 1, 1, char), horizontalLine(ZERO, ZERO, char)],
     I: [
-      verticalLine(ZERO, ZERO, "*"),
-      horizontalLine(1, MIDDLE, "*"),
-      verticalLine(size - 1, ZERO, "*"),
+      verticalLine(ZERO, ZERO, char),
+      horizontalLine(1, MIDDLE, char),
+      verticalLine(size - 1, ZERO, char),
     ],
     K: [
-      horizontalLine(ZERO, ZERO, "*"),
+      horizontalLine(ZERO, ZERO, char),
       diagonal(
         [
           [MIDDLE, 1],
           [ZERO, size],
         ],
-        "*"
+        char
       ),
       diagonal(
         [
           [MIDDLE, 1],
           [size, size],
         ],
-        "*"
+        char
       ),
     ],
     M: [
-      horizontalLine(ZERO, ZERO, "*"),
+      horizontalLine(ZERO, ZERO, char),
       diagonal(
         [
           [ZERO, ZERO],
           [MIDDLE, MIDDLE],
         ],
-        "*"
+        char
       ),
       diagonal(
         [
           [MIDDLE, MIDDLE],
           [ZERO, size],
         ],
-        "*"
+        char
       ),
-      horizontalLine(ZERO, size - 1, "*"),
+      horizontalLine(ZERO, size - 1, char),
     ],
     N: [
-      horizontalLine(ZERO, ZERO, "*"),
+      horizontalLine(ZERO, ZERO, char),
       diagonal(
         [
           [ZERO, ZERO],
           [size, size],
         ],
-        "*"
+        char
       ),
-      horizontalLine(ZERO, size - 1, "*"),
+      horizontalLine(ZERO, size - 1, char),
     ],
   };
 

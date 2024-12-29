@@ -4,20 +4,6 @@ const makeEmptyScreen = (size) => {
   return Array.from({ length: size }, () => [..." ".repeat(size)]);
 };
 
-// const rotateGrid = (grid) => {
-//   const rotated = [];
-//   const rows = grid.length;
-//   const cols = grid[0].length;
-
-//   for (let col = 0; col < cols; col++) {
-//     rotated.push([]);
-//     for (let row = rows - 1; row >= 0; row--) {
-//       rotated[col].push(grid[row][col]);
-//     }
-//   }
-//   return rotated;
-// };
-
 const display = (letters) => {
   const max = Math.max(...letters.map((letter) => letter.length));
   const combined = Array.from({ length: max }, () => []);
@@ -28,12 +14,14 @@ const display = (letters) => {
     });
   });
 
+  console.log("-".repeat(combined[0].length));
   console.log(combined.map((line) => line.join("")).join("\n"));
+  console.log("-".repeat(combined[0].length));
 };
 
-const make = (letters, size) => {
+const make = (letters, size, char) => {
   const ascii = [];
-  const letterPatterns = getCharacterPatterns(size);
+  const letterPatterns = getCharacterPatterns(size, char);
 
   [...letters].forEach((letter) => {
     if (letter in letterPatterns) {
@@ -47,10 +35,11 @@ const make = (letters, size) => {
 };
 
 const main = () => {
-  const words = prompt("Enter letters or words:");
+  const words = prompt("Enter letters or words:").toUpperCase();
   const size = prompt("Enter the font size: ");
+  const char = prompt("Enter the character: ");
 
-  make(words, size);
+  make(words, size, char);
 };
 
 main();
